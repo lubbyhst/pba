@@ -6,12 +6,14 @@ from flask import Flask, jsonify, request
 power_pin = 17
 ground_pin = 18
 reset_pin = 27
+power_led_pin = 27
 
 # Set up the GPIO pins
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(power_pin, GPIO.OUT)
 GPIO.setup(ground_pin, GPIO.OUT)
 GPIO.setup(reset_pin, GPIO.OUT)
+GPIO.setup(power_led_pin, GPIO.IN)
 
 # Initialize the Flask app
 app = Flask(__name__)
@@ -52,9 +54,9 @@ def reset():
 @app.route('/status', methods=['GET'])
 def status():
     # Read the power pin to check if the PC is on or off
-    GPIO.setup(power_pin, GPIO.IN)
-    power_status = GPIO.input(power_pin)
-    GPIO.setup(power_pin, GPIO.OUT)
+    GPIO.setup(power_led_pin, GPIO.IN)
+    power_status = GPIO.input(power_led_pin)
+    GPIO.setup(power_led_pin, GPIO.OUT)
     return jsonify({'status': 'success', 'message': 'PC status', 'power_on': bool(power_status)})
 
 
