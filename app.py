@@ -6,7 +6,7 @@ from flask import Flask, jsonify, request
 power_pin = 17
 ground_pin = 18
 reset_pin = 27
-power_led_pin = 27
+power_led_pin = 22
 
 # Set up the GPIO pins
 GPIO.setmode(GPIO.BCM)
