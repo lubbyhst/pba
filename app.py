@@ -34,7 +34,7 @@ def poweroff():
     # Turn off the PC
     GPIO.output(power_pin, GPIO.HIGH)
     GPIO.output(ground_pin, GPIO.LOW)
-    time.sleep(0.5)  # Hold the power button for half a second
+    time.sleep(5)  # Hold the power button for 5 seconds
     GPIO.output(power_pin, GPIO.LOW)
     GPIO.output(ground_pin, GPIO.LOW)
     return jsonify({'status': 'success', 'message': 'PC turned off'})

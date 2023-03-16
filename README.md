@@ -6,12 +6,16 @@ on/off state.
 
 ## Prerequisites
 
-Installed python3 and pip
+Installed python3 and pip3
+```bash
+sudo apt update
+sudo apt install python3 python3-pip
+```
 
 ## Install requirements
 
 ```bash
-pip3 install -r requirements.txt 
+sudo pip3 install -r requirements.txt 
 ```
 ## Install Systemd service
 ```bash
@@ -23,7 +27,7 @@ sudo ./install.sh
 
 #### power on
 ```bash
-curl -X PUT http://127.0.0.1/poweron
+curl -X POST http://127.0.0.1:5000/poweron
 ```
 Response:
 ```json
@@ -34,7 +38,7 @@ Response:
 ```
 #### power off
 ```bash
-curl -X PUT http://127.0.0.1/poweroff
+curl -X POST http://127.0.0.1:5000/poweroff
 ```
 Response:
 ```json
@@ -45,7 +49,7 @@ Response:
 ```
 #### reset
 ```bash
-curl -X PUT http://127.0.0.1/reset
+curl -X POST http://127.0.0.1:5000/reset
 ```
 Response:
 ```json
@@ -56,13 +60,13 @@ Response:
 ```
 #### status
 ```bash
-curl -X GET http://127.0.0.1/status
+curl -X GET http://127.0.0.1:5000/status
 ```
 Response:
 ```json
 {
   "status": "success",
   "message": "PC status",
-  "power_on": 1
+  "power_on": "true"
 }
 ```
