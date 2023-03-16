@@ -1,0 +1,11 @@
+[Unit]
+Description=Power Button API Service
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/pba
+ExecStart=/usr/bin/python3 /opt/pba/app.py
+
+[Install]
+WantedBy=multi-user.target
