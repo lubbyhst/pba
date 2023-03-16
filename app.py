@@ -25,7 +25,7 @@ def poweron():
     # Turn on the PC
     GPIO.output(power_pin, GPIO.LOW)
     time.sleep(0.5)  # Hold the power button for half a second
-    GPIO.output(ground_pin, GPIO.HIGH)
+    GPIO.output(power_pin, GPIO.HIGH)
     return jsonify({'status': 'success', 'message': 'PC turned on'})
 
 
@@ -34,7 +34,7 @@ def poweroff():
     # Turn off the PC
     GPIO.output(power_pin, GPIO.LOW)
     time.sleep(4)  # Hold the power button for 5 seconds
-    GPIO.output(ground_pin, GPIO.HIGH)
+    GPIO.output(power_pin, GPIO.HIGH)
     return jsonify({'status': 'success', 'message': 'PC turned off'})
 
 
