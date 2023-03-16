@@ -23,31 +23,27 @@ app = Flask(__name__)
 @app.route('/poweron', methods=['POST'])
 def poweron():
     # Turn on the PC
-    GPIO.output(power_pin, GPIO.HIGH)
-    GPIO.output(ground_pin, GPIO.LOW)
-    time.sleep(0.5)  # Hold the power button for half a second
     GPIO.output(power_pin, GPIO.LOW)
-    GPIO.output(ground_pin, GPIO.LOW)
+    time.sleep(0.5)  # Hold the power button for half a second
+    GPIO.output(ground_pin, GPIO.HIGH)
     return jsonify({'status': 'success', 'message': 'PC turned on'})
 
 
 @app.route('/poweroff', methods=['POST'])
 def poweroff():
     # Turn off the PC
-    GPIO.output(power_pin, GPIO.HIGH)
-    GPIO.output(ground_pin, GPIO.LOW)
-    time.sleep(5)  # Hold the power button for 5 seconds
     GPIO.output(power_pin, GPIO.LOW)
-    GPIO.output(ground_pin, GPIO.LOW)
+    time.sleep(4)  # Hold the power button for 5 seconds
+    GPIO.output(ground_pin, GPIO.HIGH)
     return jsonify({'status': 'success', 'message': 'PC turned off'})
 
 
 @app.route('/reset', methods=['POST'])
 def reset():
     # Trigger the reset button on the motherboard
-    GPIO.output(reset_pin, GPIO.HIGH)
-    time.sleep(0.5)  # Hold the reset button for half a second
     GPIO.output(reset_pin, GPIO.LOW)
+    time.sleep(0.5)  # Hold the reset button for half a second
+    GPIO.output(reset_pin, GPIO.HIGH)
     return jsonify({'status': 'success', 'message': 'PC reset'})
 
 
